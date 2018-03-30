@@ -8,22 +8,27 @@ pragma solidity ^0.4.21;
 */
 
 contract NameAndAge {
-	bytes32 public name;
-	uint32 public age;
+	address owner;
+	mapping (address => bytes32) names;
+	mapping (address => uint) ages;
+
+	function setOwner() public {
+		owner = msg.sender;
+	}
 
 	function enterName(bytes32 _name) public {
-		name = _name;
+		names[msg.sender] = _name;
 	}
 
 	function enterAge(uint32 _age) public {
-		age = _age;
+		ages[msg.sender] = _age;
 	}
 
-	function getName() public constant returns(bytes32) {
-		return name;
+	function getName() public view returns (bytes32) {
+		return names[msg.sender];
 	}
 
-	function getAge() public constant returns(uint) {
-		return age;
+	function getAge() public view returns (uint) {
+		return ages[msg.sender];
 	}
 }
