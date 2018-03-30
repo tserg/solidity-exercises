@@ -19,11 +19,11 @@ contract NameAndAge {
 		age = _age;
 	}
 
-	function getName() public view returns(bytes32) {
+	function getName() public constant returns(bytes32) {
 		return name;
 	}
 
-	function getAge() public view returns(uint) {
+	function getAge() public constant returns(uint) {
 		return age;
 	}
 }
